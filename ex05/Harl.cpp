@@ -37,7 +37,17 @@ void Harl::error(void)
 
 void Harl::complain( std::string level )
 {
-		
+	typedef void (Harl::*Funcs)(void);
+	const std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	Funcs functions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-
+	for (int i = 0; i < 4; i++)
+	{
+		if (levels[i] == level)
+		{
+			(this->*functions[i])();
+			return;
+		}
+	}
+	std::cout << "Unknown level" << std::endl;
 }

@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	Hral harl;
+	Harl harl;
 	if (argc == 2)
 		harl.complain(argv[1]);
 	else
